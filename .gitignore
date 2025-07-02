@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# SQLite database
+*.sqlite3
+db.sqlite3
+
+# Logs
+*.log
+
+# Localization
+*.pot
+
+# Django static/media
+media/
+staticfiles/
+
+# VS Code settings
+.vscode/
+
+# Virtual environments
+env/
+venv/
+ENV/
