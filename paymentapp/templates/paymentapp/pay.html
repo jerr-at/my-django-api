@@ -1,0 +1,50 @@
+{% extends 'paymentapp/base.html' %}
+
+{% block content %}
+<style>
+    .payment-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+    }
+
+    .payment-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="payment-container">
+    <div class="payment-card">
+        <h3 class="mb-4 text-center">💳 Make a Payment</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="amount" class="form-label">Amount (USD)</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" step="0.01" min="0" name="amount" id="amount" class="form-control" placeholder="Enter amount" required>
+                </div>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success">Pay</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

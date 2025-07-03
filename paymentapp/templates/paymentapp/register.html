@@ -1,0 +1,47 @@
+{% extends 'paymentapp/base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow p-4" style="min-width: 400px;">
+    <h2 class="mb-4 text-center">Create Account</h2>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        {{ form.username }}
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+          {{ form.password1 }}
+          <button type="button" class="btn btn-outline-secondary" onclick="toggleRegisterPass()">👁️</button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <div class="input-group">
+          {{ form.password2 }}
+          <button type="button" class="btn btn-outline-secondary" onclick="toggleConfirmPass()">👁️</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function toggleRegisterPass() {
+    const passField = document.getElementById('id_password1');
+    passField.type = passField.type === 'password' ? 'text' : 'password';
+  }
+
+  function toggleConfirmPass() {
+    const passField = document.getElementById('id_password2');
+    passField.type = passField.type === 'password' ? 'text' : 'password';
+  }
+</script>
+{% endblock %}

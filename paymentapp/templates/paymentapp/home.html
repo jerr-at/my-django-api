@@ -1,0 +1,8 @@
+{% extends "paymentapp/base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Welcome to the Payment System</h2>
+    <a class="btn btn-primary me-2" href="{% url 'make_payment' %}">Make a Payment</a>
+    <a class="btn btn-secondary" href="{% url 'transaction_list' %}">View Transactions</a>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'paymentapp/base.html' %}
+{% block title %}Transaction History{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 132%;">
+    <h2 class="text-center mb-4">Your Transaction History</h2>
+    <table class="table table-bordered table-striped text-center align-middle" style="width: 100%; font-size: 1.05rem;">
+        <thead class="table-dark">
+            <tr>
+                <th>Payment ID</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for txn in transactions %}
+            <tr>
+                <td style="position: relative; padding-right: 99px;">
+                    <span id="txn-id-{{ forloop.counter }}">{{ txn.payment_id }}</span>
+                    <button onclick="copyToClipboard('txn-id-{{ forloop.counter }}')" title="Copy"
+                        class="btn btn-sm btn-light"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); padding: 0.2rem 0.4rem;">
+                        📋
+                    </button>
+                </td>
+                <td>${{ txn.amount }}</td>
+                <td>{{ txn.currency }}</td>
+                <td>{{ txn.status }}</td>
+                <td>{{ txn.created_at|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No transactions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+function copyToClipboard(elementId) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Transaction ID copied!");
+    });
+}
+</script>
+{% endblock %}

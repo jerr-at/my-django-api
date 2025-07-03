@@ -1,0 +1,26 @@
+{% extends 'paymentapp/base.html' %}
+
+{% block title %}Payment Status{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg text-center p-5" style="max-width: 400px; width: 100%;">
+        {% if status == 'success' %}
+            <div class="text-success">
+                <i class="bi bi-check-circle-fill" style="font-size: 4rem;"></i>
+                <h3 class="mt-3">Payment Successful</h3>
+                <p style="color: #000;"><strong>Transaction ID:</strong> {{ payment_id }}</p>
+                <p style="color: #000;">Amount: <strong>${{ amount }}</strong></p>
+            </div>
+        {% else %}
+            <div class="text-danger">
+                <i class="bi bi-x-circle-fill" style="font-size: 4rem;"></i>
+                <h3 class="mt-3">Payment Failed</h3>
+                <p style="color: #000;"><strong>Error:</strong> {{ error }}</p>
+                <p style="color: #000;">Amount: <strong>${{ amount }}</strong></p>
+            </div>
+        {% endif %}
+        <a href="{% url 'make_payment' %}" class="btn btn-outline-primary mt-4">Back to Payment</a>
+    </div>
+</div>
+{% endblock %}
