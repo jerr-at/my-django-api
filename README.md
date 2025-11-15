@@ -75,3 +75,5 @@ Future Enhancements:
 - Email receipts for donations
 - Pagination for donor list
 
+License
+MIT License
