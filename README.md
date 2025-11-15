@@ -1,116 +1,77 @@
-beKind – UPI Donation Platform (Django)
 
-A simple and user-friendly Django-based donation platform where users can contribute funds via UPI and instantly appear on a Live Donor Wall.
-This project focuses on clean UI, secure form handling, and real-time data display — ideal for learning core Django concepts.
 
-Features
 
-UPI Donations: Users can donate any amount via UPI.
 
-Secure Donor Form: Collects name, email, amount, and an optional message.
+beKind – UPI Donation Platform 
 
-Live Donor Wall: Displays all contributions in real time.
-
-Admin Panel: Full donor management using Django Admin.
-
-Form Validation: Safe handling of user input with Django ModelForms.
-
-Responsive Design: Works smoothly on desktop and mobile.
-
-Tech Stack
-
+Project Overview:
+This is a simple and user-friendly donation platform built using Django. Users can donate money through UPI and have their details displayed on a live donor wall. The focus of the project is to learn Django fundamentals such as models, forms, views, templates, and admin functionality.
+Features:
+1. Users can donate any amount via UPI.
+2. Secure donor form collects name, email, amount, and an optional message.
+3. Donor details are stored in the database.
+4. Live Donor Wall displays all contributions.
+5. Admin panel allows complete donor management.
+6. Safe handling of user input using Django ModelForms.
+7. Responsive design that works on desktop and mobile.
+Tech Stack:
 Backend: Django (Python)
-
 Frontend: HTML, CSS, Bootstrap
-
-Forms: Django ModelForms
-
 Database: SQLite
-
+Forms: Django ModelForms
 Admin: Django Admin
 
-Project Structure
+Project Structure:
 donation_site/
-│── donation/
-│   ├── models.py        # Donor model
-│   ├── forms.py         # Donor form
-│   ├── views.py         # Logic for donation & donor wall
-│   ├── urls.py          # App routing
-│── donation_site/
-│   ├── urls.py          # Project routing
-│── templates/
-│   ├── home.html        # Donation form UI
-│   ├── donors.html      # Donor wall
-│── manage.py
-
-Donor Model
-class Donor(models.Model):
-    name        # Donor's name
-    email       # Email address
-    amount      # Donation amount (₹)
-    message     # Optional note
-    donated_at  # Timestamp of donation
-
-Quick Start
-1. Install dependencies
+- donation/
+  - models.py
+  - forms.py
+  - views.py
+  - urls.py
+- donation_site/
+  - urls.py
+- templates/
+  - home.html
+  - donors.html
+- manage.py
+Donor Model Description:
+The Donor model contains the following fields:
+- name: Name of the donor
+- email: Email address
+- amount: Donation amount (in ₹)
+- message: Optional message
+- donated_at: Timestamp of the donation
+Setup Instructions:
+Step 1: Install dependencies:
 pip install -r requirements.txt
-
-2. Run migrations
+Step 2: Apply migrations:
 python manage.py migrate
-
-3. Start server
+Step 3: Start the development server:
 python manage.py runserver
+Open the application in browser at:
+http://127.0.0.1:8000/
 
-
-Open the application:
-
-👉 http://127.0.0.1:8000/
-
-How the Donation Flow Works
-
-User fills the donation form
-
-User makes payment through UPI
-
-Form is submitted with details
-
-Django saves data securely
-
-Donor appears instantly on the Live Donor Wall
-
-Admin Access
-
-Create superuser:
-
+Admin Panel Access:
+Create a superuser account with:
 python manage.py createsuperuser
+Access the admin panel at:
+http://127.0.0.1:8000/admin/
+How the Donation Flow Works:
+1. User opens the homepage.
+2. User fills the donation form.
+3. User completes the UPI payment.
+4. Form data is validated and saved.
+5. Donor appears instantly on the donor wall.
+Learning Outcomes:
+- Understanding Django models, views, templates, and forms
+- Handling user input securely
+- Displaying dynamic data
+- Using Django Admin for backend management
+- Integrating backend and frontend components
 
+Future Enhancements:
+- UPI payment verification
+- Leaderboard for top donors
+- Email receipts for donations
+- Pagination for donor list
 
-Login at:
-
-👉 http://127.0.0.1:8000/admin/
-
-What I Learned
-
-Django models, views, forms
-
-Handling user input securely
-
-Connecting backend logic with frontend templates
-
-Using Django Admin for data management
-
-Rendering real-time data on the UI
-
-Future Enhancements
-
-Real UPI payment verification
-
-Donor leaderboard
-
-Email receipts
-
-Pagination for Donor Wall
-
-License
-
-This project is open-source under the MIT License.
